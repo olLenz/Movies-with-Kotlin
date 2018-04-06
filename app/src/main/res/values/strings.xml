@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Movies with Kotlin</string>
+    <string name="recommendations_for">Empfehlungen für:</string>
+    <string name="transition_name_recommendation">recommendation_transition</string>
 </resources>

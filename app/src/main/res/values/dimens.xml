@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="home_card_margin">14dp</dimen>
+    <dimen name="corner_radius">6dp</dimen>
+</resources>
