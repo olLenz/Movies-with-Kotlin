@@ -9,12 +9,16 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
 import com.lenz.oliver.movieswithkotlin.R
 import com.lenz.oliver.movieswithkotlin.Target
 import com.lenz.oliver.movieswithkotlin.navigateTo
 import com.lenz.oliver.movieswithkotlin.repository.models.Movie
 import kotlinx.android.synthetic.main.activity_home.*
 import javax.inject.Inject
+import com.lenz.oliver.movieswithkotlin.R.id.bottomNavigation
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
+
 
 private const val SPAN_COUNT = 2
 
@@ -33,6 +37,12 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnInteractionListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        setupBottomBar()
+
+        val homeViewModel = ViewModelProviders
+                .of(this, viewModelFactory)
+                .get(HomeViewModel::class.java)
+
         homeAdapter = HomeAdapter(LayoutInflater.from(this), this)
 
         homeRv.apply {
@@ -43,16 +53,25 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnInteractionListener {
             adapter = homeAdapter
         }
 
-        val homeViewModel = ViewModelProviders
-                .of(this, viewModelFactory)
-                .get(HomeViewModel::class.java)
-
         homeViewModel.getMoviesLiveData()
-                ?.observe(this, Observer<List<Movie>> {
+                ?.observe(this, Observer {
                     it?.let {
                         homeAdapter?.setMovies(it)
                     }
                 })
+    }
+
+    private fun setupBottomBar() {
+        // Create items
+        val item1 = AHBottomNavigationItem(R.string.movies, R.drawable.ic_movie, R.color.bright_red)
+        val item2 = AHBottomNavigationItem(R.string.series, R.drawable.ic_movie, R.color.bright_green)
+
+        // Add items
+        bottomNavigation.addItem(item1)
+        bottomNavigation.addItem(item2)
+
+        bottomNavigation.titleState = AHBottomNavigation.TitleState.ALWAYS_SHOW
+        bottomNavigation.isColored = true
     }
 
     override fun onItemClicked(movie: Movie, sharedElement: View) {

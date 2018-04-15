@@ -1,56 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.lenz.oliver.movieswithkotlin.ui.home.HomeActivity">
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stateListAnimator="@drawable/elevation_selector"
+        android:background="@color/colorPrimary">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            app:contentScrim="@android:color/transparent"
+            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed"
+            app:titleEnabled="false"
+            app:toolbarId="@+id/toolbar">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Entdecke neue Filme"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="25sp"
+                android:textStyle="bold" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+
+        <FrameLayout
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_gravity="bottom"
+            android:layout_margin="16dp"
+            android:background="@color/bright_red">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/itemSearchTil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_white_rounded_corners">
+
+                <android.support.v7.widget.SearchView
+                    android:id="@+id/itemSearchTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:lines="1"
+                    android:maxLines="1"
+                    app:iconifiedByDefault="false"
+                    app:queryHint="Filmnamen eingeben..." />
+
+            </android.support.design.widget.TextInputLayout>
+
+        </FrameLayout>
+
+    </android.support.design.widget.AppBarLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/homeRv"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@color/white"
         android:clipToPadding="false"
-        android:padding="@dimen/home_card_margin"
         android:overScrollMode="never"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        android:padding="8dp"
+        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior"
         tools:listitem="@layout/card_home" />
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="0dp"
+    <com.aurelhubert.ahbottomnavigation.AHBottomNavigation
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:cardCornerRadius="@dimen/corner_radius"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_gravity="bottom" />
 
-        <android.support.design.widget.TextInputLayout
-            android:id="@+id/itemSearchTil"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <android.support.v7.widget.SearchView
-                android:id="@+id/itemSearchTv"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:queryHint="Filmnamen eingeben..."
-                android:imeOptions="actionDone"
-                app:iconifiedByDefault="false"
-                android:inputType="text"
-                android:lines="1"
-                android:maxLines="1"/>
-
-        </android.support.design.widget.TextInputLayout>
-
-    </android.support.v7.widget.CardView>
-
-</android.support.constraint.ConstraintLayout>
+</android.support.design.widget.CoordinatorLayout>

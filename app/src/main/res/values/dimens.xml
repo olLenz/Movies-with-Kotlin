@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="home_card_margin">14dp</dimen>
-    <dimen name="corner_radius">6dp</dimen>
+    <dimen name="card_margin">16dp</dimen>
+    <dimen name="card_corner_radius">6dp</dimen>
+    <dimen name="card_elevation">4dp</dimen>
 </resources>

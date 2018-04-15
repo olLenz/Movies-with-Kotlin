@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
 import com.lenz.oliver.movieswithkotlin.R
 import com.lenz.oliver.movieswithkotlin.loadImage
 import com.lenz.oliver.movieswithkotlin.repository.models.Movie
@@ -43,17 +44,19 @@ class HomeAdapter(private val inflater: LayoutInflater,
         : RecyclerView.ViewHolder(itemView) {
 
         private val imageView: ImageView = itemView.findViewById(R.id.posterIv)
+        private val titleTv: TextView = itemView.findViewById(R.id.titleTv)
 
         fun bind(movie: Movie) {
             imageView.apply {
                 loadImage(getPosterUrl(movie.posterPath))
 
                 setOnClickListener({
-                    this.transitionName = context.getString(R.string.transition_name_recommendation)
+                    this.transitionName = context.getString(R.string.transition_name_recommendation) + movie.id
                     onInteractionListener.onItemClicked(movie, imageView)
                 })
             }
 
+            titleTv.text = movie.title
         }
 
     }

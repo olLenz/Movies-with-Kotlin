@@ -11,6 +11,11 @@
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowSharedElementEnterTransition">@transition/transition</item>
         <item name="android:windowSharedElementExitTransition">@transition/transition</item>
+
     </style>
 
+    <style name="ToolbarTitle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>
