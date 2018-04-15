@@ -47,13 +47,13 @@
             android:background="@color/bright_red">
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/itemSearchTil"
+                android:id="@+id/movieSearchTil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/background_white_rounded_corners">
 
                 <android.support.v7.widget.SearchView
-                    android:id="@+id/itemSearchTv"
+                    android:id="@+id/movieSearchTv"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:imeOptions="actionDone"

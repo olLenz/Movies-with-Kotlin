@@ -7,20 +7,25 @@ import android.os.Bundle
 import android.support.v4.app.ActivityOptionsCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.SearchView
 import android.view.LayoutInflater
 import android.view.View
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
+import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 import com.lenz.oliver.movieswithkotlin.R
 import com.lenz.oliver.movieswithkotlin.Target
 import com.lenz.oliver.movieswithkotlin.navigateTo
 import com.lenz.oliver.movieswithkotlin.repository.models.Movie
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.activity_home.*
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
-import com.lenz.oliver.movieswithkotlin.R.id.bottomNavigation
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 
 
 private const val SPAN_COUNT = 2
+private const val SEARCH_DELAY = 500L
 
 class HomeActivity : AppCompatActivity(), HomeAdapter.OnInteractionListener {
 
@@ -59,6 +64,35 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnInteractionListener {
                         homeAdapter?.setMovies(it)
                     }
                 })
+
+
+        // trigger search requests with delay
+        createSearchObservable(movieSearchTv)
+                .debounce(SEARCH_DELAY, TimeUnit.MILLISECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .filter {
+                    if (it.isEmpty()) {
+                        homeViewModel.searchMovie(it)
+                        false
+                    } else {
+                        true
+                    }
+                }
+                .distinctUntilChanged()
+                .subscribe {
+                    homeViewModel.searchMovie(it)
+                }
+    }
+
+    override fun onItemClicked(movie: Movie, sharedElement: View) {
+        val bundle = Bundle()
+        bundle.putSerializable(KEY_ITEM, movie)
+
+        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                this, sharedElement, sharedElement.transitionName
+        )
+
+        navigateTo(this, Target.RECOMMENDATIONS, bundle, options.toBundle())
     }
 
     private fun setupBottomBar() {
@@ -74,14 +108,22 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnInteractionListener {
         bottomNavigation.isColored = true
     }
 
-    override fun onItemClicked(movie: Movie, sharedElement: View) {
-        val bundle = Bundle()
-        bundle.putSerializable(KEY_ITEM, movie)
+    private fun createSearchObservable(searchView: SearchView): Observable<String> {
+        val subject = PublishSubject.create<String>()
 
-        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                this, sharedElement, sharedElement.transitionName
-        )
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
 
-        navigateTo(this, Target.RECOMMENDATIONS, bundle, options.toBundle())
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                subject.onComplete()
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let { subject.onNext(it) }
+                return true
+            }
+        })
+
+        return subject
     }
 }

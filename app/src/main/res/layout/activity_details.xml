@@ -20,7 +20,6 @@
             app:expandedTitleMarginStart="16dp"
             app:expandedTitleTextAppearance="@style/ToolbarTitle"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:title="Batman the dark knight"
             app:toolbarId="@+id/toolbar">
 
             <android.support.constraint.ConstraintLayout
