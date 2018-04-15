@@ -1,6 +1,7 @@
 package com.lenz.oliver.movieswithkotlin.repository.models
 
 import com.google.gson.annotations.SerializedName
+import com.lenz.oliver.movieswithkotlin.repository.models.pages.CreditsPage
 import java.io.Serializable
 
 data class Movie(
@@ -15,5 +16,7 @@ data class Movie(
         @SerializedName("poster_path")
         val posterPath: String?,
         @SerializedName("backdrop_path")
-        val backdropPath: String?
+        val backdropPath: String?,
+        val credits: CreditsPage?
+
 ) : Serializable
