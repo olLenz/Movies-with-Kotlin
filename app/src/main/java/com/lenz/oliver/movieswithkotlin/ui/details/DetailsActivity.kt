@@ -6,7 +6,8 @@ import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView.HORIZONTAL
+import android.support.v7.widget.RecyclerView.VERTICAL
+import android.view.MenuItem
 import android.view.View
 import com.lenz.oliver.movieswithkotlin.R
 import com.lenz.oliver.movieswithkotlin.loadImage
@@ -22,6 +23,7 @@ class DetailsActivity : AppCompatActivity() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
     private var movie: Movie? = null
+    private var detailsAdapter: DetailsAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,10 +40,13 @@ class DetailsActivity : AppCompatActivity() {
         }
 
         setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
 
         detailsIv.transitionName = getString(R.string.transition_name_details) + movie?.id
         detailsIv.loadImage(getBackdropUrl(movie?.backdropPath))
 
+        setMovieDetails(movie)
 
         detailsViewModel.getMovieDetails(movie)
                 ?.observe(this, Observer {
@@ -56,29 +61,26 @@ class DetailsActivity : AppCompatActivity() {
         super.onSaveInstanceState(outState)
     }
 
-    private fun setMovieDetails(movie: Movie) {
-        detailsCtl.title = movie.title
-
-        detailsDescriptionContainer.setOnClickListener({
-            if (detailsDescriptionMoreTv.visibility == View.GONE) {
-                detailsDescriptionMoreTv.visibility = View.VISIBLE
-                detailsDescriptionTv.maxLines = 5
-            } else {
-                detailsDescriptionTv.maxLines = 1000
-                detailsDescriptionMoreTv.visibility = View.GONE
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return when (item?.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
             }
-        })
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 
-        val castAdapter = CastAdapter(layoutInflater)
-        detailsCastRv.apply {
-            adapter = castAdapter
-            layoutManager = LinearLayoutManager(this@DetailsActivity, HORIZONTAL, false)
-            setHasFixedSize(true)
+    private fun setMovieDetails(movie: Movie?) {
+        detailsCtl.title = ""
+
+        if (detailsAdapter == null) {
+            detailsAdapter = DetailsAdapter(layoutInflater)
+            detailsRv.layoutManager = LinearLayoutManager(this)
+            detailsRv.adapter = detailsAdapter
         }
 
-        movie.credits?.cast?.let { cast ->
-            castAdapter.setCast(cast)
-        }
+        detailsAdapter?.setMovie(movie)
     }
 
 }

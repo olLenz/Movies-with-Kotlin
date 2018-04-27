@@ -40,7 +40,7 @@ class CastAdapter(private val inflater: LayoutInflater)
         private val castCharacterTv: TextView = itemView.findViewById(R.id.castCharacterTv)
 
         fun bind(cast: Cast) {
-            imageView.loadImage(getPosterUrl(cast.imagePath))
+            imageView.loadImage(getPosterUrl(cast.imagePath), circleCrop = true)
 
             castNameTv.text = cast.name
             castCharacterTv.text = cast.character

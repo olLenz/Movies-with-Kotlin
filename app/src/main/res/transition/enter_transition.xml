@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <transitionSet xmlns:android="http://schemas.android.com/apk/res/android"
-    android:duration="250">
+    android:transitionOrdering="together">
     <targets>
         <target android:excludeId="@android:id/statusBarBackground" />
         <target android:excludeId="@android:id/navigationBarBackground" />
+        <target android:excludeId="@id/appbar" />
+        <target android:excludeId="@id/detailsCtl" />
     </targets>
 
-    <changeBounds>
-        <!--<arcMotion-->
-            <!--android:maximumAngle="90"-->
-            <!--android:minimumHorizontalAngle="5"-->
-            <!--android:minimumVerticalAngle="40"/>-->
-    </changeBounds>
+    <slide android:slideEdge="bottom" >
+
+    </slide>
+    <fade>
+    </fade>
 </transitionSet>

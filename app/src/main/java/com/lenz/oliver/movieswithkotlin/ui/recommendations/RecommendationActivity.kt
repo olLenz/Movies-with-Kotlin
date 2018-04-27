@@ -8,6 +8,7 @@ import android.support.v4.app.ActivityOptionsCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import com.lenz.oliver.movieswithkotlin.R
 import com.lenz.oliver.movieswithkotlin.Target
@@ -15,8 +16,7 @@ import com.lenz.oliver.movieswithkotlin.loadImage
 import com.lenz.oliver.movieswithkotlin.navigateTo
 import com.lenz.oliver.movieswithkotlin.repository.models.Movie
 import com.lenz.oliver.movieswithkotlin.ui.home.HomeActivity.Companion.KEY_ITEM
-import com.lenz.oliver.movieswithkotlin.utils.getPosterUrl
-import kotlinx.android.synthetic.main.activity_home.*
+import com.lenz.oliver.movieswithkotlin.utils.getBackdropUrl
 import kotlinx.android.synthetic.main.activity_recommendation.*
 import javax.inject.Inject
 
@@ -43,8 +43,11 @@ class RecommendationActivity : AppCompatActivity(), RecommendationAdapter.OnInte
             intent.getSerializableExtra(KEY_ITEM) as Movie
         }
 
-        recommendationIv.transitionName = getString(R.string.transition_name_recommendation) + movie?.id
-        recommendationIv.loadImage(getPosterUrl(movie?.posterPath))
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
+        recommendationCtl.title = movie?.title
+        recommendationIv.loadImage(getBackdropUrl(movie?.backdropPath))
 
         recommendationsAdapter = RecommendationAdapter(LayoutInflater.from(this), this)
 
@@ -60,6 +63,7 @@ class RecommendationActivity : AppCompatActivity(), RecommendationAdapter.OnInte
                 ?.observe(this, Observer {
                     it?.let {
                         recommendationsAdapter?.setMovies(it)
+                        recommendationRv.scheduleLayoutAnimation()
                     }
                 })
     }
@@ -67,6 +71,16 @@ class RecommendationActivity : AppCompatActivity(), RecommendationAdapter.OnInte
     override fun onSaveInstanceState(outState: Bundle?) {
         outState?.putSerializable(KEY_ITEM, movie)
         super.onSaveInstanceState(outState)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return when (item?.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onItemClicked(movie: Movie, sharedElement: View) {

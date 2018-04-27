@@ -11,11 +11,16 @@
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowSharedElementEnterTransition">@transition/transition</item>
         <item name="android:windowSharedElementExitTransition">@transition/transition</item>
-
+        <item name="android:windowEnterTransition">@transition/enter_transition</item>
+        <item name="android:windowAllowEnterTransitionOverlap">true</item>
     </style>
 
     <style name="ToolbarTitle">
         <item name="android:textColor">@color/white</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:shadowColor">@color/dark_grey</item>
+        <item name="android:shadowDx">2</item>
+        <item name="android:shadowDy">2</item>
+        <item name="android:shadowRadius">2</item>
     </style>
 </resources>

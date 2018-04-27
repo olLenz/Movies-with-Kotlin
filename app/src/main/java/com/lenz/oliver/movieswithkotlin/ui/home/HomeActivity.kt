@@ -92,7 +92,7 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnInteractionListener {
                 this, sharedElement, sharedElement.transitionName
         )
 
-        navigateTo(this, Target.RECOMMENDATIONS, bundle, options.toBundle())
+        navigateTo(this, Target.RECOMMENDATIONS, bundle)
     }
 
     private fun setupBottomBar() {
