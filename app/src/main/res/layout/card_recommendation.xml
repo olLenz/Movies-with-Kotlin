@@ -27,6 +27,7 @@
             app:srcCompat="@color/light_grey" />
 
         <TextView
+            style="@style/Rubik.Title"
             android:id="@+id/recommendationTitleTv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -37,8 +38,6 @@
             android:shadowDy="2"
             android:shadowRadius="2"
             android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

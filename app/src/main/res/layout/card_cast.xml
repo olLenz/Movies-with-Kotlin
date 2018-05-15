@@ -22,18 +22,20 @@
 
         <TextView
             android:id="@+id/castCharacterTv"
+            style="@style/Rubik.Title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:ellipsize="end"
+            android:gravity="start"
             android:maxLines="2"
             android:textColor="@color/white"
             android:textSize="16sp"
-            android:textStyle="bold"
             tools:text="T'Challa, aka Black Panther" />
 
         <TextView
             android:id="@+id/castNameTv"
+            style="@style/Rubik"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"

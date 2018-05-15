@@ -44,7 +44,6 @@ class HomeAdapter(private val inflater: LayoutInflater,
         : RecyclerView.ViewHolder(itemView) {
 
         private val posterIv: ImageView = itemView.findViewById(R.id.homePosterIv)
-        private val titleTv: TextView = itemView.findViewById(R.id.homeTitleTv)
 
         fun bind(movie: Movie) {
             posterIv.apply {
@@ -54,8 +53,6 @@ class HomeAdapter(private val inflater: LayoutInflater,
                     onInteractionListener.onItemClicked(movie)
                 })
             }
-
-            titleTv.text = movie.title
         }
 
     }

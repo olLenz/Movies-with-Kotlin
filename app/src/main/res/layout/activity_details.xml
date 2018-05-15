@@ -17,11 +17,11 @@
             android:id="@+id/detailsCtl"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:collapsedTitleTextAppearance="@style/ToolbarTitle.Details"
+            app:collapsedTitleTextAppearance="@style/Rubik.Title.Dark"
             app:contentScrim="@android:color/transparent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:titleEnabled="false"
-            app:toolbarId="@+id/toolbar">
+            app:toolbarId="@+id/detailsToolbar">
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
@@ -41,7 +41,7 @@
                     app:srcCompat="@color/light_grey" />
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/detailsPlayIv"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:elevation="3dp"

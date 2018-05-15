@@ -45,7 +45,7 @@ class RecommendationActivity : AppCompatActivity(), RecommendationAdapter.OnInte
             setDisplayHomeAsUpEnabled(true)
             setHomeAsUpIndicator(R.drawable.ic_arrow_back)
         }
-        toolbarTitle.text = movie?.title
+        recommendationToolbarTitle.text = movie?.title
 
         recommendationsAdapter = RecommendationAdapter(layoutInflater, this)
 

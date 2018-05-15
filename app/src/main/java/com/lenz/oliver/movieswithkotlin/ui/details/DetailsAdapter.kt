@@ -111,7 +111,7 @@ class DetailsAdapter(private val inflater: LayoutInflater)
                 return
             }
 
-            castPosterIv.loadImage(getPosterUrl(cast.imagePath))
+            castPosterIv.loadImage(getPosterUrl(cast.imagePath), true)
 
             castNameTv.text = cast.name
             castCharacterTv.text = cast.character

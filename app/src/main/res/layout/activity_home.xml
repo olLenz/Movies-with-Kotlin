@@ -2,17 +2,17 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:fitsSystemWindows="true"
-    android:clipToPadding="false"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:stateListAnimator="@drawable/elevation_selector"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        android:stateListAnimator="@drawable/elevation_selector">
 
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
@@ -26,20 +26,17 @@
                 android:layout_marginEnd="16dp">
 
                 <TextView
+                    style="@style/Rubik.Title"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:textSize="16sp"
-                    android:gravity="center"
-                    android:textStyle="bold"
-                    android:textColor="#434343"
-                    android:text="Entdecken"/>
+                    android:text="@string/discover" />
 
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:tint="@color/bright_red"
-                    android:src="@drawable/ic_search"/>
+                    android:src="@drawable/ic_search"
+                    android:tint="@color/bright_red" />
 
             </LinearLayout>
 
@@ -47,8 +44,8 @@
                 android:id="@+id/movieSearchTil"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:background="@drawable/background_white_rounded_corners">
+                android:background="@drawable/background_white_rounded_corners"
+                android:visibility="gone">
 
                 <android.support.v7.widget.SearchView
                     android:id="@+id/movieSearchTv"
@@ -71,11 +68,10 @@
         android:id="@+id/homeRv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
         android:clipToPadding="false"
+        android:fitsSystemWindows="true"
         android:layoutAnimation="@anim/list_animation"
         android:overScrollMode="never"
-        android:fitsSystemWindows="true"
         android:padding="8dp"
         app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior"
         tools:listitem="@layout/card_home" />

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:selectableItemBackground"
@@ -30,19 +29,7 @@
             android:adjustViewBounds="true"
             android:background="@color/light_grey"
             android:scaleType="fitXY" />
-    </android.support.v7.widget.CardView>
 
-    <TextView
-        android:id="@+id/homeTitleTv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:gravity="center_horizontal"
-        android:textColor="@color/bright_red"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"
-        tools:text="Star wars: Der letzte Jedi" />
+    </android.support.v7.widget.CardView>
 
 </android.support.constraint.ConstraintLayout>

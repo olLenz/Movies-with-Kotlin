@@ -20,23 +20,14 @@
             android:background="@color/white"
             app:title="">
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/recommendationToolbarTitle"
+                style="@style/Rubik.Title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="32dp">
+                android:layout_marginEnd="32dp"
+                tools:text="Star Wars: Der letzte Jedi" />
 
-                <TextView
-                    android:id="@+id/toolbarTitle"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Entdecken"
-                    android:textColor="#434343"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
