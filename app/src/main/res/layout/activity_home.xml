@@ -73,6 +73,7 @@
         android:layout_height="match_parent"
         android:background="@color/white"
         android:clipToPadding="false"
+        android:layoutAnimation="@anim/list_animation"
         android:overScrollMode="never"
         android:fitsSystemWindows="true"
         android:padding="8dp"

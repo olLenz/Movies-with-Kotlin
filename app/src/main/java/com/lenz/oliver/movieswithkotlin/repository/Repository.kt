@@ -11,6 +11,9 @@ import io.reactivex.schedulers.Schedulers
 
 class Repository(private val api: TmdbApi) {
 
+    /**
+     * Get a list of currently popular movies asynchronously.
+     */
     fun getPopularMovies(): MutableLiveData<List<Movie>> {
         val data = MutableLiveData<List<Movie>>()
         api.getPopularMovies()
@@ -25,6 +28,9 @@ class Repository(private val api: TmdbApi) {
         return data
     }
 
+    /**
+     * Get a a list of recommendations for the given movie asynchronously.
+     */
     fun getRecommendations(id: Long): LiveData<List<Movie>> {
         val data = MutableLiveData<List<Movie>>()
         api.getRecommendationsForMovie(id)
@@ -39,6 +45,9 @@ class Repository(private val api: TmdbApi) {
         return data
     }
 
+    /**
+     * Get details to the given movie asynchronously.
+     */
     fun getMovieDetails(id: Long): LiveData<Movie> {
         val data = MutableLiveData<Movie>()
         api.getMovieDetails(id)
@@ -53,6 +62,9 @@ class Repository(private val api: TmdbApi) {
         return data
     }
 
+    /**
+     * Search all movies for the given query asynchronously.
+     */
     fun searchMovie(query: String, data: MutableLiveData<List<Movie>>) {
         api.searchMovie(query)
                 .observeOn(AndroidSchedulers.mainThread())

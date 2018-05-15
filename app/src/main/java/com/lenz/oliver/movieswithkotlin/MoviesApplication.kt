@@ -43,7 +43,6 @@ class MoviesApplication : Application(), HasActivityInjector {
         }
     }
 
-
     /**
      * Initialise dagger components
      */
@@ -53,7 +52,6 @@ class MoviesApplication : Application(), HasActivityInjector {
                 .application(this)
                 .build()
                 .inject(this)
-
 
         // automatically inject into activities
         registerActivityLifecycleCallbacks(object : Application.ActivityLifecycleCallbacks {
@@ -86,7 +84,6 @@ class MoviesApplication : Application(), HasActivityInjector {
             if (priority == Log.VERBOSE || priority == Log.DEBUG || priority == Log.INFO) {
                 return
             }
-
 
         }
     }

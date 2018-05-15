@@ -4,12 +4,10 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.ActivityOptionsCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.SearchView
-import android.view.LayoutInflater
-import android.view.View
+import com.lenz.oliver.movieswithkotlin.Key
 import com.lenz.oliver.movieswithkotlin.R
 import com.lenz.oliver.movieswithkotlin.Target
 import com.lenz.oliver.movieswithkotlin.navigateTo
@@ -27,10 +25,6 @@ private const val SEARCH_DELAY = 500L
 
 class HomeActivity : AppCompatActivity(), HomeAdapter.OnInteractionListener {
 
-    companion object {
-        const val KEY_ITEM = "key_item"
-    }
-
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
@@ -44,7 +38,7 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnInteractionListener {
                 .of(this, viewModelFactory)
                 .get(HomeViewModel::class.java)
 
-        homeAdapter = HomeAdapter(LayoutInflater.from(this), this)
+        homeAdapter = HomeAdapter(layoutInflater, this)
 
         homeRv.apply {
             setHasFixedSize(true)
@@ -56,9 +50,9 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnInteractionListener {
                 ?.observe(this, Observer {
                     it?.let {
                         homeAdapter?.setMovies(it)
+                        homeRv.scheduleLayoutAnimation()
                     }
                 })
-
 
         // trigger search requests with delay
         createSearchObservable(movieSearchTv)
@@ -78,14 +72,9 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnInteractionListener {
                 }
     }
 
-    override fun onItemClicked(movie: Movie, sharedElement: View) {
+    override fun onItemClicked(movie: Movie) {
         val bundle = Bundle()
-        bundle.putSerializable(KEY_ITEM, movie)
-
-        val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                this, sharedElement, sharedElement.transitionName
-        )
-
+        bundle.putSerializable(Key.MOVIE, movie)
         navigateTo(this, Target.RECOMMENDATIONS, bundle)
     }
 

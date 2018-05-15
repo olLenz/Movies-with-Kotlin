@@ -13,11 +13,10 @@ import com.lenz.oliver.movieswithkotlin.repository.models.Movie
 import com.lenz.oliver.movieswithkotlin.utils.getPosterUrl
 
 private enum class TYPE(val value: Int) {
-    HEADER(1), CAST(2), DETAILS(3)
+    CAST(1), DETAILS(2)
 }
 
 private const val POSITION_DETAILS = 0
-private const val POSITION_CAST = 1
 
 class DetailsAdapter(private val inflater: LayoutInflater)
     : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -48,7 +47,7 @@ class DetailsAdapter(private val inflater: LayoutInflater)
                 val cast = movie?.credits?.cast
                 val size = cast?.size
                 if (size != null && position < size && holder is CastViewHolder) {
-                    holder.bind(cast.get(position))
+                    holder.bind(cast[position])
                 }
             }
         }
@@ -103,7 +102,7 @@ class DetailsAdapter(private val inflater: LayoutInflater)
     class CastViewHolder(itemView: View)
         : RecyclerView.ViewHolder(itemView) {
 
-        private val imageView: ImageView = itemView.findViewById(R.id.posterIv)
+        private val castPosterIv: ImageView = itemView.findViewById(R.id.castPosterIv)
         private val castNameTv: TextView = itemView.findViewById(R.id.castNameTv)
         private val castCharacterTv: TextView = itemView.findViewById(R.id.castCharacterTv)
 
@@ -112,7 +111,7 @@ class DetailsAdapter(private val inflater: LayoutInflater)
                 return
             }
 
-            imageView.loadImage(getPosterUrl(cast.imagePath))
+            castPosterIv.loadImage(getPosterUrl(cast.imagePath))
 
             castNameTv.text = cast.name
             castCharacterTv.text = cast.character

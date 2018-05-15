@@ -8,10 +8,10 @@ import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
+import com.lenz.oliver.movieswithkotlin.Key
 import com.lenz.oliver.movieswithkotlin.R
 import com.lenz.oliver.movieswithkotlin.loadImage
 import com.lenz.oliver.movieswithkotlin.repository.models.Movie
-import com.lenz.oliver.movieswithkotlin.ui.home.HomeActivity
 import com.lenz.oliver.movieswithkotlin.utils.clearLightStatusBar
 import com.lenz.oliver.movieswithkotlin.utils.getBackdropUrl
 import kotlinx.android.synthetic.main.activity_details.*
@@ -36,15 +36,17 @@ class DetailsActivity : AppCompatActivity() {
                 .get(DetailsViewModel::class.java)
 
         movie = if (savedInstanceState != null) {
-            savedInstanceState.getSerializable(HomeActivity.KEY_ITEM) as Movie
+            savedInstanceState.getSerializable(Key.MOVIE) as Movie
         } else {
-            intent.getSerializableExtra(HomeActivity.KEY_ITEM) as Movie
+            intent.getSerializableExtra(Key.MOVIE) as Movie
         }
 
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
-        supportActionBar?.title = ""
+        setSupportActionBar(detailsToolbar)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_arrow_back)
+            title = ""
+        }
 
         detailsIv.transitionName = getString(R.string.transition_name_details) + movie?.id
         detailsIv.loadImage(getBackdropUrl(movie?.backdropPath))
@@ -60,7 +62,7 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
-        outState?.putSerializable(HomeActivity.KEY_ITEM, movie)
+        outState?.putSerializable(Key.MOVIE, movie)
         super.onSaveInstanceState(outState)
     }
 
@@ -72,6 +74,10 @@ class DetailsActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onBackPressed() {
+        finish()
     }
 
     private fun setMovieDetails(movie: Movie?) {

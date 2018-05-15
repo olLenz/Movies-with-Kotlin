@@ -36,23 +36,22 @@ class HomeAdapter(private val inflater: LayoutInflater,
 
     interface OnInteractionListener {
 
-        fun onItemClicked(movie: Movie, sharedElement: View)
+        fun onItemClicked(movie: Movie)
 
     }
 
     class HomeViewHolder(itemView: View, private val onInteractionListener: OnInteractionListener)
         : RecyclerView.ViewHolder(itemView) {
 
-        private val imageView: ImageView = itemView.findViewById(R.id.posterIv)
-        private val titleTv: TextView = itemView.findViewById(R.id.titleTv)
+        private val posterIv: ImageView = itemView.findViewById(R.id.homePosterIv)
+        private val titleTv: TextView = itemView.findViewById(R.id.homeTitleTv)
 
         fun bind(movie: Movie) {
-            imageView.apply {
+            posterIv.apply {
                 loadImage(getPosterUrl(movie.posterPath))
 
                 setOnClickListener({
-                    this.transitionName = context.getString(R.string.transition_name_recommendation) + movie.id
-                    onInteractionListener.onItemClicked(movie, imageView)
+                    onInteractionListener.onItemClicked(movie)
                 })
             }
 

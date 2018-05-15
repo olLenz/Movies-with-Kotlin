@@ -12,10 +12,10 @@ import com.lenz.oliver.movieswithkotlin.repository.models.Movie
 import com.lenz.oliver.movieswithkotlin.utils.getBackdropUrl
 
 private enum class TYPE(val value: Int) {
-    NORMAL(2), HEADER(1)
+    HEADER(1), NORMAL(2)
 }
 
-private const val POSITTION_HEADER = 0
+private const val POSITION_HEADER = 0
 
 class RecommendationAdapter(private val inflater: LayoutInflater,
                             private val onInteractionListener: OnInteractionListener)
@@ -47,11 +47,11 @@ class RecommendationAdapter(private val inflater: LayoutInflater,
 
     override fun getItemViewType(position: Int) =
             when (position) {
-                POSITTION_HEADER -> TYPE.HEADER.value
+                POSITION_HEADER -> TYPE.HEADER.value
                 else -> TYPE.NORMAL.value
             }
 
-    override fun getItemCount() = if (movies.size > 0) movies.size + 1 else 0
+    override fun getItemCount() = if (movies.isNotEmpty()) movies.size.plus(1) else 0
 
     fun setMovies(movies: List<Movie>) {
         this.movies = movies
@@ -64,17 +64,14 @@ class RecommendationAdapter(private val inflater: LayoutInflater,
 
     }
 
-    class HeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class HeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-    }
-
-    class RecommendationViewHolder(itemView: View,
-                                   private val onInteractionListener: OnInteractionListener
+    class RecommendationViewHolder(
+            itemView: View, private val onInteractionListener: OnInteractionListener
     ) : RecyclerView.ViewHolder(itemView) {
 
         private val recommendationMovieIv = itemView.findViewById<ImageView>(R.id.recommendationMovieIv)
         private val recommendationTitleTv = itemView.findViewById<TextView>(R.id.recommendationTitleTv)
-        private val recommendationSubtitleTv = itemView.findViewById<TextView>(R.id.recommendationSubtitleTv)
 
         fun bind(movie: Movie) {
             itemView.setOnClickListener({
@@ -87,7 +84,6 @@ class RecommendationAdapter(private val inflater: LayoutInflater,
             }
 
             recommendationTitleTv.text = movie.title
-            recommendationSubtitleTv.text = "${movie.voteAverage} von 10"
         }
 
     }
