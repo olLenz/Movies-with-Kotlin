@@ -5,18 +5,19 @@ import com.lenz.oliver.movieswithkotlin.repository.models.pages.CreditsPage
 import java.io.Serializable
 
 data class Movie(
-        val id: Long?,
+        val id: Long? = null,
         @SerializedName("vote_count")
-        val voteCount: Int?,
+        val voteCount: Int? = null,
         @SerializedName("vote_average")
-        val voteAverage: Double?,
-        val title: String?,
+        val voteAverage: Double? = null,
+        val title: String? = null,
         @SerializedName("release_date")
-        val releaseDate: String?,
+        val releaseDate: String? = null,
         @SerializedName("poster_path")
-        val posterPath: String?,
+        val posterPath: String? = null,
         @SerializedName("backdrop_path")
-        val backdropPath: String?,
-        val credits: CreditsPage?
+        val backdropPath: String? = null,
+        val overview: String? = null,
+        val credits: CreditsPage? = null
 
 ) : Serializable

@@ -12,11 +12,9 @@ import android.view.MenuItem
 import android.view.View
 import com.lenz.oliver.movieswithkotlin.R
 import com.lenz.oliver.movieswithkotlin.Target
-import com.lenz.oliver.movieswithkotlin.loadImage
 import com.lenz.oliver.movieswithkotlin.navigateTo
 import com.lenz.oliver.movieswithkotlin.repository.models.Movie
 import com.lenz.oliver.movieswithkotlin.ui.home.HomeActivity.Companion.KEY_ITEM
-import com.lenz.oliver.movieswithkotlin.utils.getBackdropUrl
 import kotlinx.android.synthetic.main.activity_recommendation.*
 import javax.inject.Inject
 
@@ -44,10 +42,11 @@ class RecommendationActivity : AppCompatActivity(), RecommendationAdapter.OnInte
         }
 
         setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
-        recommendationCtl.title = movie?.title
-        recommendationIv.loadImage(getBackdropUrl(movie?.backdropPath))
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            setHomeAsUpIndicator(R.drawable.ic_arrow_back)
+        }
+        toolbarTitle.text = movie?.title
 
         recommendationsAdapter = RecommendationAdapter(LayoutInflater.from(this), this)
 

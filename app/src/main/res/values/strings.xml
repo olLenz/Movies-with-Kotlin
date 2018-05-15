@@ -3,6 +3,4 @@
     <string name="recommendations_for">Empfehlungen für:</string>
     <string name="transition_name_recommendation">recommendation_transition</string>
     <string name="transition_name_details">details_image</string>
-    <string name="movies">Filme</string>
-    <string name="series">Serien</string>
 </resources>

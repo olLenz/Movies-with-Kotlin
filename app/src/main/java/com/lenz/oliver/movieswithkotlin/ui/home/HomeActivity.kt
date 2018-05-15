@@ -10,8 +10,6 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.SearchView
 import android.view.LayoutInflater
 import android.view.View
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigation
-import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem
 import com.lenz.oliver.movieswithkotlin.R
 import com.lenz.oliver.movieswithkotlin.Target
 import com.lenz.oliver.movieswithkotlin.navigateTo
@@ -42,8 +40,6 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnInteractionListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        setupBottomBar()
-
         val homeViewModel = ViewModelProviders
                 .of(this, viewModelFactory)
                 .get(HomeViewModel::class.java)
@@ -51,9 +47,7 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnInteractionListener {
         homeAdapter = HomeAdapter(LayoutInflater.from(this), this)
 
         homeRv.apply {
-            // improve performance, because all items have the same size
             setHasFixedSize(true)
-
             layoutManager = GridLayoutManager(context, SPAN_COUNT)
             adapter = homeAdapter
         }
@@ -93,19 +87,6 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnInteractionListener {
         )
 
         navigateTo(this, Target.RECOMMENDATIONS, bundle)
-    }
-
-    private fun setupBottomBar() {
-        // Create items
-        val item1 = AHBottomNavigationItem(R.string.movies, R.drawable.ic_movie, R.color.bright_red)
-        val item2 = AHBottomNavigationItem(R.string.series, R.drawable.ic_movie, R.color.bright_green)
-
-        // Add items
-        bottomNavigation.addItem(item1)
-        bottomNavigation.addItem(item2)
-
-        bottomNavigation.titleState = AHBottomNavigation.TitleState.ALWAYS_SHOW
-        bottomNavigation.isColored = true
     }
 
     private fun createSearchObservable(searchView: SearchView): Observable<String> {

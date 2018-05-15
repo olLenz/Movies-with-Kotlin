@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="true"
     tools:context="com.lenz.oliver.movieswithkotlin.ui.recommendations.RecommendationActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -11,43 +13,32 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/recommendationCtl"
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:collapsedTitleTextAppearance="@style/ToolbarTitle"
-            app:contentScrim="@android:color/transparent"
-            app:expandedTitleTextAppearance="@style/ToolbarTitle"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:toolbarId="@+id/toolbar">
+            android:layout_height="?actionBarSize"
+            android:background="@color/white"
+            app:title="">
 
-            <android.support.constraint.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_collapseMode="parallax">
+                android:layout_height="match_parent"
+                android:layout_marginEnd="32dp">
 
-                <ImageView
-                    android:id="@+id/recommendationIv"
+                <TextView
+                    android:id="@+id/toolbarTitle"
                     android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:transitionName="@string/transition_name_details"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintDimensionRatio="w,16:9"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@color/light_grey" />
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Entdecken"
+                    android:textColor="#434343"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
-            </android.support.constraint.ConstraintLayout>
+            </LinearLayout>
+        </android.support.v7.widget.Toolbar>
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
-        </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v7.widget.RecyclerView
@@ -57,6 +48,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:clipToPadding="false"
+        android:fitsSystemWindows="true"
         android:layoutAnimation="@anim/list_animation"
         android:overScrollMode="never"
         android:paddingBottom="16dp"

@@ -51,7 +51,7 @@ class RecommendationAdapter(private val inflater: LayoutInflater,
                 else -> TYPE.NORMAL.value
             }
 
-    override fun getItemCount() = movies.size + 1
+    override fun getItemCount() = if (movies.size > 0) movies.size + 1 else 0
 
     fun setMovies(movies: List<Movie>) {
         this.movies = movies

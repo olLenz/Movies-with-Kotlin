@@ -41,6 +41,9 @@ class DetailsAdapter(private val inflater: LayoutInflater)
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (getItemViewType(position)) {
+            TYPE.DETAILS.value -> {
+                (holder as? DetailsViewHolder)?.bind(movie)
+            }
             TYPE.CAST.value -> {
                 val cast = movie?.credits?.cast
                 val size = cast?.size
@@ -72,18 +75,28 @@ class DetailsAdapter(private val inflater: LayoutInflater)
 
     class DetailsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+        private val detailsTitleTv: TextView = itemView.findViewById(R.id.detailsTitleTv)
+        private val detailsDescriptionTv: TextView = itemView.findViewById(R.id.detailsDescriptionTv)
+        private val detailsDescriptionContainer: View = itemView.findViewById(R.id.detailsDescriptionContainer)
+        private val detailsDescriptionMoreTv: TextView = itemView.findViewById(R.id.detailsDescriptionMoreTv)
 
-        fun bind(movie: Movie) {
+        fun bind(movie: Movie?) {
+            if (movie == null) {
+                return
+            }
 
-//            detailsDescriptionContainer.setOnClickListener({
-//                if (detailsDescriptionMoreTv.visibility == View.GONE) {
-//                    detailsDescriptionMoreTv.visibility = View.VISIBLE
-//                    detailsDescriptionTv.maxLines = 5
-//                } else {
-//                    detailsDescriptionTv.maxLines = 1000
-//                    detailsDescriptionMoreTv.visibility = View.GONE
-//                }
-//            })
+            detailsTitleTv.text = movie.title
+
+            detailsDescriptionTv.text = movie.overview
+            detailsDescriptionContainer.setOnClickListener({
+                if (detailsDescriptionMoreTv.visibility == View.GONE) {
+                    detailsDescriptionMoreTv.visibility = View.VISIBLE
+                    detailsDescriptionTv.maxLines = 5
+                } else {
+                    detailsDescriptionTv.maxLines = 1000
+                    detailsDescriptionMoreTv.visibility = View.GONE
+                }
+            })
         }
     }
 
@@ -99,7 +112,7 @@ class DetailsAdapter(private val inflater: LayoutInflater)
                 return
             }
 
-            imageView.loadImage(getPosterUrl(cast.imagePath), circleCrop = true)
+            imageView.loadImage(getPosterUrl(cast.imagePath))
 
             castNameTv.text = cast.name
             castCharacterTv.text = cast.character

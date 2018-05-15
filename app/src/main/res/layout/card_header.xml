@@ -13,8 +13,9 @@
         android:layout_marginStart="16dp"
         android:paddingBottom="8dp"
         android:text="Empfehlungen:"
-        android:textStyle="bold"
         android:textSize="18sp"
+        android:textColor="@color/bright_red"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>

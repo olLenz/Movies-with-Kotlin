@@ -68,7 +68,4 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
-
-    //bottom navigation
-    implementation 'com.aurelhubert:ahbottomnavigation:2.1.0'
 }

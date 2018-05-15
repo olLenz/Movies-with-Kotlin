@@ -4,15 +4,15 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView.VERTICAL
 import android.view.MenuItem
-import android.view.View
 import com.lenz.oliver.movieswithkotlin.R
 import com.lenz.oliver.movieswithkotlin.loadImage
 import com.lenz.oliver.movieswithkotlin.repository.models.Movie
 import com.lenz.oliver.movieswithkotlin.ui.home.HomeActivity
+import com.lenz.oliver.movieswithkotlin.utils.clearLightStatusBar
 import com.lenz.oliver.movieswithkotlin.utils.getBackdropUrl
 import kotlinx.android.synthetic.main.activity_details.*
 import javax.inject.Inject
@@ -28,6 +28,8 @@ class DetailsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
+        window.statusBarColor = ContextCompat.getColor(this, R.color.dark_grey)
+        clearLightStatusBar(window.decorView)
 
         val detailsViewModel = ViewModelProviders
                 .of(this, viewModelFactory)
@@ -42,6 +44,7 @@ class DetailsActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_arrow_back)
+        supportActionBar?.title = ""
 
         detailsIv.transitionName = getString(R.string.transition_name_details) + movie?.id
         detailsIv.loadImage(getBackdropUrl(movie?.backdropPath))
@@ -72,8 +75,6 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     private fun setMovieDetails(movie: Movie?) {
-        detailsCtl.title = ""
-
         if (detailsAdapter == null) {
             detailsAdapter = DetailsAdapter(layoutInflater)
             detailsRv.layoutManager = LinearLayoutManager(this)

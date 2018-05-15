@@ -2,15 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:animateLayoutChanges="true"
-    android:orientation="vertical">
+    android:paddingEnd="16dp"
+    android:paddingStart="16dp"
+    android:orientation="vertical"
+    tools:background="@color/dark_grey">
+
+    <TextView
+        android:id="@+id/detailsTitleTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:layout_marginBottom="4dp"
+        android:textStyle="bold"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:text="Batman The Dark Knight"/>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingEnd="16dp"
-        android:paddingStart="16dp"
         android:text="Action | Romantik"
         android:textColor="@color/bright_red"
         android:textSize="14sp" />
@@ -29,8 +43,6 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="5"
-            android:paddingEnd="16dp"
-            android:paddingStart="16dp"
             android:text="Aufgrund von Bodenschätzen außerirdischen Ursprungs ist das afrikanische Königreich Wakanda unermesslich reich. Nur hier kommt das Vibrationen jeder Art und Stärke absorbierende Mineral Vibranium vor – Captain America verdankt Wakanda seinen Schild. Den Bewohnern von Wakanda ist sehr daran gelegen, vor den Augen Fremder verborgen zu bleiben.  Reichtum weckt Begehrlichkeiten, und es braucht einen starken Führer, ihn zu verteidigen: Black Panther! Die Verantwortung des Black Panther wird vom König Wakandas an den jeweiligen Nachfolger weitergegeben. Und so nimmt T’Challa (Chadwick Boseman) die Bürde und die Würde des ihm vorbestimmten Schicksals von seinem Vater T’Chaka nach dessen tragischen Tod entgegen."
             android:textColor="@color/white" />
 
@@ -54,7 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:padding="16dp">
+        android:paddingTop="16dp">
 
         <LinearLayout
             android:layout_width="0dp"
@@ -142,7 +154,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:padding="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
         android:text="Cast"
         android:textColor="@color/white"
         android:textSize="16sp"
