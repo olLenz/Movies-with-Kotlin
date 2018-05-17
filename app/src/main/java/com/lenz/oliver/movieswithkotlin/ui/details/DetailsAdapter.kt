@@ -75,9 +75,13 @@ class DetailsAdapter(private val inflater: LayoutInflater)
     class DetailsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val detailsTitleTv: TextView = itemView.findViewById(R.id.detailsTitleTv)
+        private val detailsGenresTv: TextView = itemView.findViewById(R.id.detailsGenresTv)
         private val detailsDescriptionTv: TextView = itemView.findViewById(R.id.detailsDescriptionTv)
         private val detailsDescriptionContainer: View = itemView.findViewById(R.id.detailsDescriptionContainer)
         private val detailsDescriptionMoreTv: TextView = itemView.findViewById(R.id.detailsDescriptionMoreTv)
+        private val detailsReleaseTv: TextView = itemView.findViewById(R.id.detailsReleaseTv)
+        private val detailsRatingTv: TextView = itemView.findViewById(R.id.detailsRatingTv)
+        private val detailsRuntimeTv: TextView = itemView.findViewById(R.id.detailsRuntimeTv)
 
         fun bind(movie: Movie?) {
             if (movie == null) {
@@ -85,6 +89,15 @@ class DetailsAdapter(private val inflater: LayoutInflater)
             }
 
             detailsTitleTv.text = movie.title
+
+            if (movie.genres?.isNotEmpty() == true) {
+                detailsGenresTv.visibility = View.VISIBLE
+                detailsGenresTv.text = movie.genres
+                        .map { it.name }
+                        .joinToString(separator = " | ")
+            } else {
+                detailsGenresTv.visibility = View.GONE
+            }
 
             if (movie.overview?.isEmpty() == true) {
                 detailsDescriptionContainer.visibility = View.GONE
@@ -100,6 +113,22 @@ class DetailsAdapter(private val inflater: LayoutInflater)
                         detailsDescriptionMoreTv.visibility = View.GONE
                     }
                 })
+            }
+
+            movie.releaseDate?.let {
+                // implement proper date handling instead of parsing the string here
+                detailsReleaseTv.text = it
+                        .split("-")
+                        .reversed()
+                        .joinToString(".")
+            }
+
+            movie.voteAverage?.let {
+                detailsRatingTv.text = "${it} / 10"
+            }
+
+            movie.runtime?.let {
+                detailsRuntimeTv.text = "${it} m"
             }
         }
     }

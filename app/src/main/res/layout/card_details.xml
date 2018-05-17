@@ -18,18 +18,18 @@
         android:ellipsize="end"
         android:gravity="start"
         android:maxLines="2"
-        android:textSize="20sp"
         android:textColor="@color/white"
+        android:textSize="20sp"
         tools:text="Batman The Dark Knight" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/detailsGenresTv"
         style="@style/Rubik"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Action | Romantik"
         android:textColor="@color/bright_red"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        tools:text="Action | Romantik" />
 
     <RelativeLayout
         android:id="@+id/detailsDescriptionContainer"
@@ -81,15 +81,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
-                android:text="Erscheinungsdatum"
+                android:text="@string/release_date"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/detailsReleaseTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="12.03.1999"
+                android:text="@string/placeholder"
+                tools:text="12.03.1999"
                 android:textAlignment="center"
                 android:textColor="@color/bright_red"
                 android:textSize="14sp"
@@ -108,15 +109,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
-                android:text="Bewertung"
+                android:text="@string/rating"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/detailsRatingTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="8.1"
+                android:text="@string/placeholder"
                 android:textAlignment="center"
                 android:textColor="@color/bright_red"
                 android:textSize="14sp"
@@ -134,15 +135,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
-                android:text="Laufzeit"
+                android:text="@string/runtime"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/detailsRuntimeTv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="200 Minuten"
+                android:text="@string/placeholder"
                 android:textAlignment="center"
                 android:textColor="@color/bright_red"
                 android:textSize="14sp"
@@ -158,7 +159,7 @@
         android:layout_marginTop="16dp"
         android:paddingBottom="16dp"
         android:paddingTop="16dp"
-        android:text="Cast"
+        android:text="@string/cast"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold" />
