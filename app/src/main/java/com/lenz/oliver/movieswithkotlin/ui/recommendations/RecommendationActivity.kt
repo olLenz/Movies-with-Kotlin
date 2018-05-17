@@ -60,6 +60,7 @@ class RecommendationActivity : AppCompatActivity(), RecommendationAdapter.OnInte
         recommendationsViewModel.getRecommendationsLiveData(movie)
                 ?.observe(this, Observer {
                     it?.let {
+                        recommendationPb.visibility = View.GONE
                         recommendationsAdapter?.setMovies(it)
                         recommendationRv.scheduleLayoutAnimation()
                     }

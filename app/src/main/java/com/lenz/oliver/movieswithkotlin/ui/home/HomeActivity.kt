@@ -9,6 +9,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.SearchView
 import android.view.Menu
+import android.view.View
 import com.lenz.oliver.movieswithkotlin.Key
 import com.lenz.oliver.movieswithkotlin.R
 import com.lenz.oliver.movieswithkotlin.Target
@@ -63,6 +64,7 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnInteractionListener {
         homeViewModel?.getMoviesLiveData()
                 ?.observe(this, Observer {
                     it?.let {
+                        homePb.visibility = View.GONE
                         homeAdapter?.setMovies(it)
                         homeRv.scheduleLayoutAnimation()
                     }

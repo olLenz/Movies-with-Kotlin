@@ -32,6 +32,13 @@
 
     </android.support.design.widget.AppBarLayout>
 
+
+    <ProgressBar
+        android:id="@+id/homePb"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/homeRv"
         android:layout_width="match_parent"
