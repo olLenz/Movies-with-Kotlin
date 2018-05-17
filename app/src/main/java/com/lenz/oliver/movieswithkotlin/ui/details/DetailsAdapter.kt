@@ -86,16 +86,21 @@ class DetailsAdapter(private val inflater: LayoutInflater)
 
             detailsTitleTv.text = movie.title
 
-            detailsDescriptionTv.text = movie.overview
-            detailsDescriptionContainer.setOnClickListener({
-                if (detailsDescriptionMoreTv.visibility == View.GONE) {
-                    detailsDescriptionMoreTv.visibility = View.VISIBLE
-                    detailsDescriptionTv.maxLines = 5
-                } else {
-                    detailsDescriptionTv.maxLines = 1000
-                    detailsDescriptionMoreTv.visibility = View.GONE
-                }
-            })
+            if (movie.overview?.isEmpty() == true) {
+                detailsDescriptionContainer.visibility = View.GONE
+            } else {
+                detailsDescriptionContainer.visibility = View.VISIBLE
+                detailsDescriptionTv.text = movie.overview
+                detailsDescriptionContainer.setOnClickListener({
+                    if (detailsDescriptionMoreTv.visibility == View.GONE) {
+                        detailsDescriptionMoreTv.visibility = View.VISIBLE
+                        detailsDescriptionTv.maxLines = 5
+                    } else {
+                        detailsDescriptionTv.maxLines = 1000
+                        detailsDescriptionMoreTv.visibility = View.GONE
+                    }
+                })
+            }
         }
     }
 

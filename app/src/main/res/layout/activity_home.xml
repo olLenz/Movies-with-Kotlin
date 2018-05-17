@@ -32,7 +32,6 @@
 
     </android.support.design.widget.AppBarLayout>
 
-
     <ProgressBar
         android:id="@+id/homePb"
         android:layout_width="40dp"

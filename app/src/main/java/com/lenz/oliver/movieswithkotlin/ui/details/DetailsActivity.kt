@@ -16,6 +16,10 @@ import com.lenz.oliver.movieswithkotlin.utils.clearLightStatusBar
 import com.lenz.oliver.movieswithkotlin.utils.getBackdropUrl
 import kotlinx.android.synthetic.main.activity_details.*
 import javax.inject.Inject
+import android.content.Intent
+import android.net.Uri
+import android.view.View
+
 
 class DetailsActivity : AppCompatActivity() {
 
@@ -81,6 +85,19 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     private fun setMovieDetails(movie: Movie?) {
+        val trailer = movie?.videos?.getYoutubeTrailer()
+        if (trailer != null) {
+            detailsPlayIv.visibility = View.VISIBLE
+            detailsToolbarContainer.setOnClickListener {
+                val url = Uri.parse("https://www.youtube.com/watch?v=${trailer.key}")
+                startActivity(
+                        Intent(Intent.ACTION_VIEW, url)
+                )
+            }
+        } else {
+            detailsPlayIv.visibility = View.GONE
+        }
+
         if (detailsAdapter == null) {
             detailsAdapter = DetailsAdapter(layoutInflater)
             detailsRv.layoutManager = LinearLayoutManager(this)

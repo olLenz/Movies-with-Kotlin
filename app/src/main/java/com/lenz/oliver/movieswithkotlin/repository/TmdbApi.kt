@@ -15,7 +15,7 @@ interface TmdbApi {
     @GET("movie/{movie_id}/recommendations")
     fun getRecommendationsForMovie(@Path(value = "movie_id") movieId: Long): Observable<MoviePage>
 
-    @GET("movie/{movie_id}?append_to_response=credits")
+    @GET("movie/{movie_id}?append_to_response=credits,videos")
     fun getMovieDetails(@Path(value = "movie_id")movieId: Long): Observable<Movie>
 
     @GET("search/movie")

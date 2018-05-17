@@ -24,6 +24,7 @@
             app:toolbarId="@+id/detailsToolbar">
 
             <android.support.constraint.ConstraintLayout
+                android:id="@+id/detailsToolbarContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_collapseMode="parallax">
