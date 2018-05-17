@@ -15,50 +15,18 @@
         android:stateListAnimator="@drawable/elevation_selector">
 
         <android.support.v7.widget.Toolbar
+            android:id="@+id/homeToolbar"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             android:background="@color/white"
+            app:contentInsetStart="0dp"
             app:title="">
 
-            <LinearLayout
+            <TextView
+                style="@style/Rubik.Title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="16dp">
-
-                <TextView
-                    style="@style/Rubik.Title"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="@string/discover" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_search"
-                    android:tint="@color/bright_red" />
-
-            </LinearLayout>
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/movieSearchTil"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/background_white_rounded_corners"
-                android:visibility="gone">
-
-                <android.support.v7.widget.SearchView
-                    android:id="@+id/movieSearchTv"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:imeOptions="actionDone"
-                    android:inputType="text"
-                    android:lines="1"
-                    android:maxLines="1"
-                    app:iconifiedByDefault="false"
-                    app:queryHint="Filmnamen eingeben..." />
-
-            </android.support.design.widget.TextInputLayout>
+                android:text="@string/discover" />
 
         </android.support.v7.widget.Toolbar>
 

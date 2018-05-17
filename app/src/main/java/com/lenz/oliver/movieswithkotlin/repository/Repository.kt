@@ -14,18 +14,22 @@ class Repository(private val api: TmdbApi) {
     /**
      * Get a list of currently popular movies asynchronously.
      */
-    fun getPopularMovies(): MutableLiveData<List<Movie>> {
-        val data = MutableLiveData<List<Movie>>()
+    fun getPopularMovies(data: MutableLiveData<List<Movie>>? = null): MutableLiveData<List<Movie>> {
+        val newData = MutableLiveData<List<Movie>>()
         api.getPopularMovies()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribeBy(
                         onNext = {
-                            data.value = it.results
+                            if (data != null) {
+                                data.value = it.results
+                            } else {
+                                newData.value = it.results
+                            }
                         }
                 )
 
-        return data
+        return newData
     }
 
     /**

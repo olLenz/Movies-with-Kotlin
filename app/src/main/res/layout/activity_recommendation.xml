@@ -18,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             android:background="@color/white"
+            app:contentInsetStart="0dp"
             app:title="">
 
             <TextView
@@ -25,7 +26,6 @@
                 style="@style/Rubik.Title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="32dp"
                 tools:text="Star Wars: Der letzte Jedi" />
 
         </android.support.v7.widget.Toolbar>

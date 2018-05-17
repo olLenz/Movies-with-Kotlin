@@ -24,6 +24,9 @@ class HomeViewModel
 
     fun searchMovie(query: String) {
         if (query.isEmpty()) {
+            moviesLiveData?.let {
+                repository.getPopularMovies(it)
+            }
             return
         }
 
