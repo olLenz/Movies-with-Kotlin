@@ -11,24 +11,28 @@
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:stateListAnimator="@drawable/elevation_selector">
+        android:background="@color/white">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/homeToolbar"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            android:background="@color/white"
-            app:contentInsetStart="0dp"
-            app:title="">
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/homeToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:background="@color/white"
+                app:title=""/>
 
             <TextView
                 style="@style/Rubik.Title"
+                android:layout_marginStart="42dp"
+                android:layout_marginEnd="42dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/discover" />
 
-        </android.support.v7.widget.Toolbar>
+        </FrameLayout>
 
     </android.support.design.widget.AppBarLayout>
 

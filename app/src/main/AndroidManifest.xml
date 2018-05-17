@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.home.HomeActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:label="">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,7 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.recommendations.RecommendationActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:label=""/>
         <activity android:name=".ui.details.DetailsActivity"
             android:screenOrientation="portrait"/>
 

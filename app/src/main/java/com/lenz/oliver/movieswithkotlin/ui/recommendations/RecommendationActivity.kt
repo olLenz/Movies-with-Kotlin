@@ -40,7 +40,7 @@ class RecommendationActivity : AppCompatActivity(), RecommendationAdapter.OnInte
             intent.getSerializableExtra(Key.MOVIE) as Movie
         }
 
-        setSupportActionBar(toolbar)
+        setSupportActionBar(recommendationToolbar)
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
             setHomeAsUpIndicator(R.drawable.ic_arrow_back)
