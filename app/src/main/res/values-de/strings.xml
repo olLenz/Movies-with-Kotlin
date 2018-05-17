@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Filmempfehlungen</string>
+    <string name="transition_name_details">details_image</string>
+    <string name="discover">Entdecken</string>
+    <string name="recommendations">Empfehlungen:</string>
+    <string name="show_more">Mehr anzeigen</string>
+    <string name="search_title">Suchen</string>
+    <string name="release_date">Erscheinungsdatum</string>
+    <string name="placeholder">-</string>
+    <string name="rating">Bewertung</string>
+    <string name="runtime">Laufzeit</string>
+    <string name="cast">Cast</string>
+</resources>

@@ -1,10 +1,13 @@
 <resources>
     <string name="app_name">Movies with Kotlin</string>
-    <string name="recommendations_for">Empfehlungen für:</string>
-    <string name="transition_name_recommendation">recommendation_transition</string>
     <string name="transition_name_details">details_image</string>
-    <string name="discover">Entdecken</string>
-    <string name="recommendations">Empfehlungen:</string>
-    <string name="show_more">Mehr anzeigen</string>
-    <string name="search_title">Suchen</string>
+    <string name="discover">Discover</string>
+    <string name="recommendations">Recommendations:</string>
+    <string name="show_more">Show More</string>
+    <string name="search_title">Search</string>
+    <string name="release_date">Release Date</string>
+    <string name="placeholder">-</string>
+    <string name="rating">Rating</string>
+    <string name="runtime">Runtime</string>
+    <string name="cast">Cast</string>
 </resources>
