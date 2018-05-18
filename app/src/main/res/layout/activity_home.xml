@@ -22,15 +22,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
                 android:background="@color/white"
-                app:title=""/>
+                app:contentInsetStartWithNavigation="0dp"
+                app:contentInsetStart="0dp"
+                app:contentInsetEnd="0dp"
+                app:contentInsetEndWithActions="0dp"
+                app:title="">
 
-            <TextView
-                style="@style/Rubik.Title"
-                android:layout_marginStart="42dp"
-                android:layout_marginEnd="42dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/discover" />
+                <TextView
+                    style="@style/Rubik.Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="50dp"
+                    android:text="@string/discover" />
+
+            </android.support.v7.widget.Toolbar>
 
         </FrameLayout>
 
@@ -40,7 +45,7 @@
         android:id="@+id/homePb"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/homeRv"
