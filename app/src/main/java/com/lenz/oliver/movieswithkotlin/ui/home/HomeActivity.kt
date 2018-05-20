@@ -40,6 +40,7 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnInteractionListener {
         setContentView(R.layout.activity_home)
 
         setSupportActionBar(homeToolbar)
+        homeToolbar.title = ""
 
         homeViewModel = ViewModelProviders
                 .of(this, viewModelFactory)
