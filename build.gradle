@@ -2,11 +2,11 @@
 
 buildscript {
     // increase when releasing a major new version      1.2.5 => 2.2.5
-    ext.versionMajor = 0
+    ext.versionMajor = 1
     // increase when releasing a new feature            1.2.5 => 1.3.5
-    ext.versionFeature = 1
+    ext.versionFeature = 0
     //increase when releasing only bug fixes            1.2.5 => 1.2.6
-    ext.versionFix = 6
+    ext.versionFix = 0
 
     ext.minSdkVersion = 21
     ext.targetSdkVersion = 27
