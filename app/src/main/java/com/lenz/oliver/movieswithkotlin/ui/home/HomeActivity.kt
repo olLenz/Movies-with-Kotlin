@@ -3,12 +3,15 @@ package com.lenz.oliver.movieswithkotlin.ui.home
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
+import android.content.DialogInterface
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.SearchView
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import com.lenz.oliver.movieswithkotlin.Key
 import com.lenz.oliver.movieswithkotlin.R
@@ -22,6 +25,9 @@ import io.reactivex.subjects.PublishSubject
 import kotlinx.android.synthetic.main.activity_home.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
+import android.widget.Toast
+import android.content.Intent
+import android.net.Uri
 
 
 private const val SPAN_COUNT = 2
@@ -97,6 +103,41 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnInteractionListener {
                 }
 
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return when(item?.itemId) {
+            R.id.aboutItem -> {
+                showAboutDialog()
+                true
+            }
+            R.id.feedbackItem -> {
+                sendFeedback()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun sendFeedback() {
+        val i = Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "olenz.android@gmail.com", null))
+        i.putExtra(Intent.EXTRA_SUBJECT, "Feedback Movie App")
+        try {
+            startActivity(i)
+        } catch (ex: android.content.ActivityNotFoundException) {
+            Toast.makeText(this, "There are no email clients installed.", Toast.LENGTH_SHORT).show()
+        }
+
+    }
+
+    private fun showAboutDialog() {
+        AlertDialog.Builder(this)
+                .setTitle(getString(R.string.about))
+                .setView(R.layout.dialog_about)
+                .setPositiveButton(getString(R.string.close), { dialogInterface: DialogInterface, _: Int ->
+                    dialogInterface.dismiss()
+                })
+                .show()
     }
 
     override fun onItemClicked(movie: Movie) {

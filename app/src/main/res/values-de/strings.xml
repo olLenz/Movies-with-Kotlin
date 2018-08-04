@@ -10,4 +10,8 @@
     <string name="rating">Bewertung</string>
     <string name="runtime">Laufzeit</string>
     <string name="cast">Cast</string>
+    <string name="about">About</string>
+    <string name="feedback">Feedback</string>
+    <string name="about_desc">Diese App lädt alle Informationen und Bilder von The Movie DB.\nDanke für das Bereitstellen einer öffentlichen API!</string>
+    <string name="close">Schließen</string>
 </resources>

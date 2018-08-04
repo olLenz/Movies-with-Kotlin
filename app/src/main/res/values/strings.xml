@@ -10,4 +10,8 @@
     <string name="rating">Rating</string>
     <string name="runtime">Runtime</string>
     <string name="cast">Cast</string>
+    <string name="about">About</string>
+    <string name="feedback">Feedback</string>
+    <string name="about_desc">This app gets all its information and pictures from The Movie DB. Thanks for providing an open API and making this app possible.</string>
+    <string name="close">Close</string>
 </resources>
