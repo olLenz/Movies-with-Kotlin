@@ -10,7 +10,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
 import android.view.View
 import com.lenz.oliver.movieswithkotlin.Key
-import com.lenz.oliver.movieswithkotlin.R
+import com.lenz.oliver.movieswithkotlin.base.R
 import com.lenz.oliver.movieswithkotlin.Target
 import com.lenz.oliver.movieswithkotlin.navigateTo
 import com.lenz.oliver.movieswithkotlin.repository.models.Movie

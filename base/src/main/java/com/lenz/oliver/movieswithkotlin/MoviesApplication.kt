@@ -2,18 +2,15 @@ package com.lenz.oliver.movieswithkotlin
 
 import android.app.Activity
 import android.app.Application
-import android.content.Context
+import android.os.Bundle
 import android.util.Log
-import com.lenz.oliver.movieswithkotlin.dagger.ApplicationComponent
+import com.lenz.oliver.movieswithkotlin.base.BuildConfig
 import com.lenz.oliver.movieswithkotlin.dagger.DaggerApplicationComponent
-import com.lenz.oliver.movieswithkotlin.dagger.RepositoryModule
+import dagger.android.AndroidInjection
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import timber.log.Timber
 import javax.inject.Inject
-import android.os.Bundle
-import dagger.android.AndroidInjection
-import dagger.android.support.HasSupportFragmentInjector
 
 
 /**

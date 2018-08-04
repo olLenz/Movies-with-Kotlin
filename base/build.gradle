@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.feature'
 
 apply plugin: 'kotlin-android'
 
@@ -11,6 +11,9 @@ def keystoreProperties = new Properties()
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
+    //define this module as base feature module for instant app support
+    baseFeature true
+
     signingConfigs {
         config {
             keyAlias keystoreProperties['keyAlias']
@@ -22,7 +25,6 @@ android {
 
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.lenz.oliver.movieswithkotlin"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode generateVersionCode()

@@ -14,7 +14,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.lenz.oliver.movieswithkotlin.Key
-import com.lenz.oliver.movieswithkotlin.R
+import com.lenz.oliver.movieswithkotlin.base.R
 import com.lenz.oliver.movieswithkotlin.Target
 import com.lenz.oliver.movieswithkotlin.navigateTo
 import com.lenz.oliver.movieswithkotlin.repository.models.Movie
@@ -28,6 +28,7 @@ import javax.inject.Inject
 import android.widget.Toast
 import android.content.Intent
 import android.net.Uri
+import com.lenz.oliver.movieswithkotlin.base.R.id.*
 
 
 private const val SPAN_COUNT = 2

@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
 import com.lenz.oliver.movieswithkotlin.Key
-import com.lenz.oliver.movieswithkotlin.R
+import com.lenz.oliver.movieswithkotlin.base.R
 import com.lenz.oliver.movieswithkotlin.loadImage
 import com.lenz.oliver.movieswithkotlin.repository.models.Movie
 import com.lenz.oliver.movieswithkotlin.utils.clearLightStatusBar

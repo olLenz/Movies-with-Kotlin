@@ -1,6 +1,6 @@
 package com.lenz.oliver.movieswithkotlin.repository.interceptors
 
-import com.lenz.oliver.movieswithkotlin.BuildConfig
+import com.lenz.oliver.movieswithkotlin.base.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.util.*

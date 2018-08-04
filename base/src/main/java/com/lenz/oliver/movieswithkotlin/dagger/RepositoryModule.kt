@@ -1,6 +1,6 @@
 package com.lenz.oliver.movieswithkotlin.dagger
 
-import com.lenz.oliver.movieswithkotlin.BuildConfig
+import com.lenz.oliver.movieswithkotlin.base.BuildConfig
 import com.lenz.oliver.movieswithkotlin.repository.Repository
 import com.lenz.oliver.movieswithkotlin.repository.TmdbApi
 import com.lenz.oliver.movieswithkotlin.repository.interceptors.AuthInterceptor
