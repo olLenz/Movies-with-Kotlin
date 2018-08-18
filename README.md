@@ -10,9 +10,9 @@ Some facts about this project:
 
 ## The App
 
-[First Screenshot](store/first_en.png)
-[Second Screenshot](store/second_en.png)
-[Third Screenshot](store/third_en.png)
+![First Screenshot](store/first_en.png)
+![Second Screenshot](store/second_en.png)
+![Third Screenshot](store/third_en.png)
 
 Movies with Kotlin is an Open Source Android Application, that is focused on movie recommendations.
 The basic principle is: Discover new movies based on movies you already know.
