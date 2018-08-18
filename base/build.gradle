@@ -47,6 +47,8 @@ android {
 }
 
 dependencies {
+    application project(':installed')
+
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     testImplementation 'junit:junit:4.12'

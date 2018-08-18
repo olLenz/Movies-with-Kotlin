@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.lenz.oliver.movieswithkotlin.base">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -12,19 +13,49 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.lenz.oliver.movieswithkotlin.ui.home.HomeActivity"
+        <activity
+            android:name="com.lenz.oliver.movieswithkotlin.ui.home.HomeActivity"
             android:screenOrientation="portrait">
+
+
+            <meta-data android:name="default-url"
+                android:value="https://movies-with-kotlin.firebaseapp.com" />
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="https"
+                    android:host="movies-with-kotlin.firebaseapp.com"/>
+            </intent-filter>
+
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:scheme="http"
+                    android:host="movies-with-kotlin.firebaseapp.com"/>
+            </intent-filter>
         </activity>
-        <activity android:name="com.lenz.oliver.movieswithkotlin.ui.recommendations.RecommendationActivity"
+        <activity
+            android:name="com.lenz.oliver.movieswithkotlin.ui.recommendations.RecommendationActivity"
             android:screenOrientation="portrait"
-            android:label=""/>
-        <activity android:name="com.lenz.oliver.movieswithkotlin.ui.details.DetailsActivity"
-            android:screenOrientation="portrait"/>
+            android:label="" />
+        <activity
+            android:name="com.lenz.oliver.movieswithkotlin.ui.details.DetailsActivity"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="preloaded_fonts"
