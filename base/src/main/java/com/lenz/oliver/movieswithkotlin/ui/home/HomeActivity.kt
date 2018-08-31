@@ -68,7 +68,7 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnInteractionListener {
             })
         }
 
-        homeViewModel?.getMoviesLiveData()
+        homeViewModel?.moviesLiveData
                 ?.observe(this, Observer {
                     it?.let {
                         homePb.visibility = View.GONE
@@ -77,6 +77,7 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnInteractionListener {
                     }
                 })
 
+        homeViewModel?.getPopularMovies()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -134,9 +135,9 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnInteractionListener {
         AlertDialog.Builder(this)
                 .setTitle(getString(R.string.about))
                 .setView(R.layout.dialog_about)
-                .setPositiveButton(getString(R.string.close), { dialogInterface: DialogInterface, _: Int ->
+                .setPositiveButton(getString(R.string.close)) { dialogInterface: DialogInterface, _: Int ->
                     dialogInterface.dismiss()
-                })
+                }
                 .show()
     }
 

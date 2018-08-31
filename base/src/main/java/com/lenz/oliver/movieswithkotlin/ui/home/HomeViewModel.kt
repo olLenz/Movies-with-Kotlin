@@ -1,38 +1,55 @@
 package com.lenz.oliver.movieswithkotlin.ui.home
 
-import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.MutableLiveData
+import android.arch.lifecycle.ViewModel
 import com.lenz.oliver.movieswithkotlin.repository.Repository
 import com.lenz.oliver.movieswithkotlin.repository.models.Movie
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.subscribeBy
+import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 
 class HomeViewModel
-@Inject constructor(application: Application, private val repository: Repository)
-    : AndroidViewModel(application) {
+@Inject constructor(private val repository: Repository) : ViewModel() {
 
-    private var moviesLiveData: MutableLiveData<List<Movie>>? = null
+    val moviesLiveData = MutableLiveData<List<Movie>>()
+    private val compositeDisposable = CompositeDisposable()
 
-    init {
-
-        moviesLiveData = repository.getPopularMovies()
-
+    override fun onCleared() {
+        compositeDisposable.clear()
     }
-
-    fun getMoviesLiveData() = moviesLiveData
 
     fun searchMovie(query: String) {
         if (query.isEmpty()) {
-            moviesLiveData?.let {
-                repository.getPopularMovies(it)
-            }
+            getPopularMovies()
             return
         }
 
-        moviesLiveData?.let {
-            repository.searchMovie(query, it)
-        }
+        compositeDisposable.add(
+                repository.searchMovie(query)
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(Schedulers.io())
+                        .subscribeBy(
+                                onNext = {
+                                    moviesLiveData.value = it.results
+                                }
+                        )
+        )
+    }
+
+    fun getPopularMovies() {
+        compositeDisposable.add(
+                repository.getPopularMovies()
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribeOn(Schedulers.io())
+                        .subscribeBy(
+                                onNext = {
+                                    moviesLiveData.value = it.results
+                                }
+                        )
+        )
     }
 
 }
