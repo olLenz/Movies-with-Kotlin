@@ -14,6 +14,7 @@ Movies with Kotlin is an Open Source Android Application, that is focused on mov
 The basic principle is: Discover new movies based on movies you already know.
 
 [Install Movies with Kotlin from the play store](https://play.google.com/store/apps/details?id=com.lenz.oliver.movieswithkotlin)
+[Try the Instant App](https://play.google.com/store/apps/details?id=com.lenz.oliver.movieswithkotlin&launch=true)
 
 
 
