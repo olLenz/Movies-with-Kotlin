@@ -1,6 +1,7 @@
 # Movies-with-Kotlin
 
 Some facts about this project:
+
 - completly written in Kotlin
 - uses MVVM-Pattern
 - is an instant app
@@ -15,8 +16,6 @@ The basic principle is: Discover new movies based on movies you already know.
 
 [Install Movies with Kotlin from the play store](https://play.google.com/store/apps/details?id=com.lenz.oliver.movieswithkotlin)\
 [Try the Instant App](https://play.google.com/store/apps/details?id=com.lenz.oliver.movieswithkotlin&launch=true)
-
-
 
 ![First Screenshot](store/first_en.png)
 ![Second Screenshot](store/second_en.png)
