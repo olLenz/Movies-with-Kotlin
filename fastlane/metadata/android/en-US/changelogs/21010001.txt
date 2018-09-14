@@ -1,0 +1,1 @@
+This app now supports the instant app feature

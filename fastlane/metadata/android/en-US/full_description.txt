@@ -1,0 +1,1 @@
+The concept of this app is rather simple: Select a movie you like and you will get recommendations based on this movie. If you like the recommendation you can navigate to the movie details and look up a short description, showtime, actors and much more.

@@ -1,0 +1,2 @@
+Diese App funktioniert nach einem einfach Prinzip: Wähle deinen Lieblingsfilm aus und dir werden automatisch neue Filme für deinen Geschmack vorgeschlagen.
+Zu jedem Filmvorschlag kannst Du Details, wie z.B. den Trailer, eine Kurzbeschreibung oder die Schauspieler anschauen.
