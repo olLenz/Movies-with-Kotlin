@@ -6,10 +6,10 @@ buildscript {
     // increase when releasing a new feature            1.2.5 => 1.3.5
     ext.versionFeature = 0
     //increase when releasing only bug fixes            1.2.5 => 1.2.6
-    ext.versionFix = 1
+    ext.versionFix = 7
 
     ext.minSdkVersion = 21
-    ext.targetSdkVersion = 27
+    ext.targetSdkVersion = 28
 
     ext.kotlin_version = '1.2.41'
     ext.support_version = '27.1.1'
