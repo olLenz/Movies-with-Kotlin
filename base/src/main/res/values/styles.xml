@@ -8,8 +8,6 @@
         <item name="colorAccent">@color/colorAccent</item>
 
         <item name="android:windowLightStatusBar">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
-        <item name="android:navigationBarColor">@android:color/transparent</item>
 
         <!-- shared element transitions -->
         <item name="android:windowContentTransitions">true</item>
