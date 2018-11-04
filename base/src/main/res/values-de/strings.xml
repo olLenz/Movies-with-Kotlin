@@ -14,4 +14,5 @@
     <string name="feedback">Feedback</string>
     <string name="about_desc">Diese App lädt alle Informationen und Bilder von The Movie DB.\nDanke für das Bereitstellen einer öffentlichen API!</string>
     <string name="close">Schließen</string>
+    <string name="generic_error">Ein unerwarteter Fehler ist aufgetreten</string>
 </resources>

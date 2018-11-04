@@ -1,5 +1,8 @@
 package com.lenz.oliver.movieswithkotlin
 
+import android.support.annotation.StringRes
+import android.support.design.widget.Snackbar
+import android.view.View
 import android.widget.ImageView
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.target.Target
@@ -21,4 +24,10 @@ fun ImageView.loadImage(imageUrl: String, circleCrop: Boolean = false) {
     builder.transition(DrawableTransitionOptions.withCrossFade())
             .override(Target.SIZE_ORIGINAL)
             .into(this)
+}
+
+fun View.showSnackbar(@StringRes message: Int?) {
+    message?.let {
+        Snackbar.make(this, message, Snackbar.LENGTH_LONG).show()
+    }
 }

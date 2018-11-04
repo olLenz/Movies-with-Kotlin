@@ -3,22 +3,24 @@ package com.lenz.oliver.movieswithkotlin.ui.details
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
+import android.view.View
 import com.lenz.oliver.movieswithkotlin.Key
 import com.lenz.oliver.movieswithkotlin.base.R
 import com.lenz.oliver.movieswithkotlin.loadImage
 import com.lenz.oliver.movieswithkotlin.repository.models.Movie
+import com.lenz.oliver.movieswithkotlin.repository.models.Status
+import com.lenz.oliver.movieswithkotlin.showSnackbar
 import com.lenz.oliver.movieswithkotlin.utils.clearLightStatusBar
 import com.lenz.oliver.movieswithkotlin.utils.getBackdropUrl
 import kotlinx.android.synthetic.main.activity_details.*
 import javax.inject.Inject
-import android.content.Intent
-import android.net.Uri
-import android.view.View
 
 
 class DetailsActivity : AppCompatActivity() {
@@ -59,8 +61,13 @@ class DetailsActivity : AppCompatActivity() {
 
         detailsViewModel.getMovieDetails(movie)
                 ?.observe(this, Observer {
-                    it?.let {
-                        setMovieDetails(it)
+                    when (it?.status) {
+                        Status.SUCCESS -> {
+                            setMovieDetails(it.data)
+                        }
+                        Status.ERROR -> {
+                            detailsRv.showSnackbar(it.message)
+                        }
                     }
                 })
     }

@@ -1,5 +1,6 @@
 package com.lenz.oliver.movieswithkotlin.ui.home
 
+import android.annotation.SuppressLint
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
@@ -21,10 +22,13 @@ import com.lenz.oliver.movieswithkotlin.Target
 import com.lenz.oliver.movieswithkotlin.base.R
 import com.lenz.oliver.movieswithkotlin.navigateTo
 import com.lenz.oliver.movieswithkotlin.repository.models.Movie
+import com.lenz.oliver.movieswithkotlin.repository.models.Status
+import com.lenz.oliver.movieswithkotlin.showSnackbar
 import com.lenz.oliver.movieswithkotlin.utils.hideKeyboard
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.subjects.PublishSubject
+import kotlinx.android.synthetic.main.activity_details.*
 import kotlinx.android.synthetic.main.activity_home.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -70,16 +74,23 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnInteractionListener {
 
         homeViewModel?.moviesLiveData
                 ?.observe(this, Observer {
-                    it?.let {
-                        homePb.visibility = View.GONE
-                        homeAdapter?.setMovies(it)
-                        homeRv.scheduleLayoutAnimation()
+                    when (it?.status) {
+                        Status.SUCCESS -> {
+                            homePb.visibility = View.GONE
+                            homeAdapter?.setMovies(it.data)
+                            homeRv.scheduleLayoutAnimation()
+                        }
+                        Status.ERROR -> {
+                            homePb.visibility = View.GONE
+                            homeRv.showSnackbar(it.message)
+                        }
                     }
                 })
 
         homeViewModel?.getPopularMovies()
     }
 
+    @SuppressLint("CheckResult")
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_home, menu)
         val searchMenuItem = menu.findItem(R.id.searchItem)
@@ -107,7 +118,7 @@ class HomeActivity : AppCompatActivity(), HomeAdapter.OnInteractionListener {
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        return when(item?.itemId) {
+        return when (item?.itemId) {
             R.id.aboutItem -> {
                 showAboutDialog()
                 true

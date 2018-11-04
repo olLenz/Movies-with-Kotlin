@@ -14,4 +14,5 @@
     <string name="feedback">Feedback</string>
     <string name="about_desc">This app gets all its information and pictures from The Movie DB. Thanks for providing an open API and making this app possible.</string>
     <string name="close">Close</string>
+    <string name="generic_error">An unexpected error occurred</string>
 </resources>

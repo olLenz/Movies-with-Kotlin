@@ -29,9 +29,11 @@ class HomeAdapter(private val inflater: LayoutInflater,
 
     override fun getItemCount() = movies.size
 
-    fun setMovies(movies: List<Movie>) {
-        this.movies = movies
-        notifyDataSetChanged()
+    fun setMovies(movies: List<Movie>?) {
+        movies?.let {
+            this.movies = movies
+            notifyDataSetChanged()
+        }
     }
 
     interface OnInteractionListener {

@@ -53,9 +53,11 @@ class RecommendationAdapter(private val inflater: LayoutInflater,
 
     override fun getItemCount() = if (movies.isNotEmpty()) movies.size.plus(1) else 0
 
-    fun setMovies(movies: List<Movie>) {
-        this.movies = movies
-        notifyDataSetChanged()
+    fun setMovies(movies: List<Movie>?) {
+        movies?.let {
+            this.movies = movies
+            notifyDataSetChanged()
+        }
     }
 
     interface OnInteractionListener {

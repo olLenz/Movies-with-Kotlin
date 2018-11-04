@@ -14,6 +14,8 @@ import com.lenz.oliver.movieswithkotlin.base.R
 import com.lenz.oliver.movieswithkotlin.Target
 import com.lenz.oliver.movieswithkotlin.navigateTo
 import com.lenz.oliver.movieswithkotlin.repository.models.Movie
+import com.lenz.oliver.movieswithkotlin.repository.models.Status
+import com.lenz.oliver.movieswithkotlin.showSnackbar
 import kotlinx.android.synthetic.main.activity_recommendation.*
 import javax.inject.Inject
 
@@ -59,10 +61,16 @@ class RecommendationActivity : AppCompatActivity(), RecommendationAdapter.OnInte
 
         recommendationsViewModel.getRecommendationsLiveData(movie)
                 ?.observe(this, Observer {
-                    it?.let {
-                        recommendationPb.visibility = View.GONE
-                        recommendationsAdapter?.setMovies(it)
-                        recommendationRv.scheduleLayoutAnimation()
+                    when (it?.status) {
+                        Status.SUCCESS -> {
+                            recommendationPb.visibility = View.GONE
+                            recommendationsAdapter?.setMovies(it.data)
+                            recommendationRv.scheduleLayoutAnimation()
+                        }
+                        Status.ERROR -> {
+                            recommendationPb.visibility = View.GONE
+                            recommendationRv.showSnackbar(it.message)
+                        }
                     }
                 })
     }
